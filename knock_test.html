@@ -14,13 +14,17 @@
 
 <body>
 
-<!-- Folders -->
-<ul class="folders" data-bind="foreach: folders">
-    <li data-bind="text: $data, 
-                   css: { selected: $data == $root.chosenFolderId() },
-                   click: $root.goToFolder"></li>
-</ul>
-
+<div class='liveExample'> 
+    
+<form data-bind="submit: addItem">
+    New item:
+    <input data-bind='value: itemToAdd, valueUpdate: "afterkeydown"' />
+    <button type="submit" data-bind="enable: itemToAdd().length > 0">Add</button>
+    <p>Your items:</p>
+    <select multiple="multiple" width="50" data-bind="options: items"> </select>
+</form>
+    
+</div>
 
 <script type='text/javascript' src="js/vendor/knockout.js"></script>
 <script type='text/javascript' src='js/viewModel.js'></script>
